@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CapsTrack/CapsTrack.api.csproj" />
+  <Project Path="CapsTrack/Tests/CapsTrack.Api.Tests/CapsTrack.Api.Tests.csproj" />
+</Solution>
