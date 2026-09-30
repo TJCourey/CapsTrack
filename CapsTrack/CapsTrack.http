@@ -1,0 +1,6 @@
+@CapsTrack_HostAddress = http://localhost:5156
+
+GET {{CapsTrack_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
