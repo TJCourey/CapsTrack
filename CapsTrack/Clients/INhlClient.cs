@@ -6,7 +6,7 @@ namespace CapsTrack.api.Clients
     {
         Task<NhlScheduleResponse?> GetTeamScheduleAsync(
             string teamAbbreviation,
-            String season,
+            string season,
             CancellationToken cancellationToken = default);
     }
 }

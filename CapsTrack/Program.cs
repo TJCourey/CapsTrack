@@ -30,17 +30,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Temporary CAP-6 test endpoint
-app.MapGet("/api/test/nhl", async (
-    INhlClient nhlClient,
-    CancellationToken cancellationToken) =>
-{
-    var schedule = await nhlClient.GetTeamScheduleAsync(
-        "WSH",
-        "20262027",
-        cancellationToken);
-
-    return Results.Ok(schedule);
-});
-
 app.Run();
