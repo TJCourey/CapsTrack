@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CapsTrack.api.csproj" />
+    <ProjectReference Include="..\..\CapsTrack\CapsTrack.api.csproj" />
   </ItemGroup>
 
   <ItemGroup>
