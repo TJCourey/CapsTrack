@@ -9,6 +9,13 @@
         public string? AwayTeam { get; set; }
         public int? HomeScore { get; set; }
         public int? AwayScore { get; set; }
-        public string? GameStatus { get; set; }
+        public GameStatus Status{ get; set; }
+    }
+    public enum GameStatus
+    {
+        Scheduled,
+        Live,
+        Final,
+        Unknown
     }
 }

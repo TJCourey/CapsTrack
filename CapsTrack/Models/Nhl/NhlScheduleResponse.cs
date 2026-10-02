@@ -28,4 +28,5 @@
         public string Abbrev { get; set; } = string.Empty;
         public int? Score { get; set; }
     }
+
 }

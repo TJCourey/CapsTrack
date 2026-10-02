@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using CapsTrack.api.Models;
 using CapsTrack.api.Models.Nhl;
 
@@ -19,7 +20,7 @@ namespace CapsTrack.api.Mappers
                 AwayTeam = nhlGame.AwayTeam.Abbrev,
                 HomeScore = nhlGame.HomeTeam.Score,
                 AwayScore = nhlGame.AwayTeam.Score,
-                GameStatus = nhlGame.GameState
+                Status = nhlGame.GameState.ToGameStatus()
             };
         }
     }
