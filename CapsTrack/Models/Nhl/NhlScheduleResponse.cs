@@ -16,11 +16,13 @@
         public long Id { get; set; }
         public int Season { get; set; }
         public DateOnly GameDate { get; set; }
+
         public string? GameState { get; set; }
 
         public NhlTeam HomeTeam { get; set; } = new();
         public NhlTeam AwayTeam { get; set; } = new();
     }
+
     public class NhlTeam
     {
         public string Abbrev { get; set; } = string.Empty;

@@ -15,11 +15,11 @@ namespace CapsTrack.api.Mappers
                 GameId = nhlGame.Id,
                 GameDate = nhlGame.GameDate.ToDateTime(TimeOnly.MinValue),
                 Season = nhlGame.Season,
-                HomeTeam = nhlGame.HomeTeam,
-                AwayTeam = nhlGame.AwayTeam,
-                HomeScore = nhlGame.HomeScore,
-                AwayScore = nhlGame.AwayScore,
-                GameStatus = nhlGame.GameStatus
+                HomeTeam = nhlGame.HomeTeam.Abbrev,
+                AwayTeam = nhlGame.AwayTeam.Abbrev,
+                HomeScore = nhlGame.HomeTeam.Score,
+                AwayScore = nhlGame.AwayTeam.Score,
+                GameStatus = nhlGame.GameState
             };
         }
     }

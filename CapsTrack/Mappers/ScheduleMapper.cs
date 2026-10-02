@@ -7,7 +7,7 @@ namespace CapsTrack.api.Mappers
     {
         public static ScheduleModel ToModel(
             this NhlScheduleResponse nhlSchedule,
-            string teamAbbreviation,)
+            string teamAbbreviation)
         {
             ArgumentNullException.ThrowIfNull(nhlSchedule);
 
@@ -17,7 +17,9 @@ namespace CapsTrack.api.Mappers
                 ?? throw new InvalidOperationException(
                     "NHL Response did not contain season info"),
 
-              Games = []
+              Games = nhlSchedule.Games
+                .Select(game => game.ToModel())
+                .ToList()
 
             };
         }
