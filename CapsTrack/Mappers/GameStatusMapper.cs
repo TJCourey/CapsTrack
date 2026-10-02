@@ -6,7 +6,7 @@ namespace CapsTrack.api.Mappers
     {
         public static GameStatus ToGameStatus(this string? nhlGameState)
         {
-            return nhlGameState?.ToLower() switch
+            return nhlGameState?.ToUpperInvariant() switch
             {
                 "FUT" => GameStatus.Scheduled,
                 "PRE" => GameStatus.Scheduled,

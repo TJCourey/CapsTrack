@@ -12,7 +12,7 @@ namespace CapsTrack.api.Mappers
             ArgumentNullException.ThrowIfNull(nhlSchedule);
 
             return new ScheduleModel
-            { TeamAbbrv = teamAbbreviation.ToUpper(),
+            { TeamAbbrv = teamAbbreviation.ToUpperInvariant(),
               Season = nhlSchedule.CurrentSeason 
                 ?? throw new InvalidOperationException(
                     "NHL Response did not contain season info"),

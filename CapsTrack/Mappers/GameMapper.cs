@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using CapsTrack.api.Models;
 using CapsTrack.api.Models.Nhl;
 
