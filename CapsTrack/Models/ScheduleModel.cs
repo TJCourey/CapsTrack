@@ -1,6 +1,6 @@
 ﻿namespace CapsTrack.api.Models
 {
-    public class Schedule
+    public class ScheduleModel
     {
         public string? TeamAbbrv { get; set; }
         public int Season { get; set; }
