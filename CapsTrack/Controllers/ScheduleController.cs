@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CapsTrack.api.Controllers
 {
     [ApiController]
-    [Route("api/team/schedule")]
+    [Route("api/capitals/schedule")]
     public class GetScheduleController : ControllerBase
     {
         private readonly IScheduleService _scheduleService;
@@ -16,10 +16,14 @@ namespace CapsTrack.api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get(
+            CancellationToken cancellationToken)
         {
-            // Use _scheduleService here to return real data.
-            return Ok();
+            var schedule = await _scheduleService.GetTeamScheduleAsync(
+                "WSH",
+                "20262027",
+                cancellationToken);
+            return Ok(schedule);
         }
     }
 }
