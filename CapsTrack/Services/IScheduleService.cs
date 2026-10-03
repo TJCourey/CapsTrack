@@ -2,9 +2,9 @@
 
 namespace CapsTrack.api.Services
 {
-    public interface IScheduleServicecs
+    public interface IScheduleService
     {
-        Task<ScheduleModel?> GetTeamScheduleAsync(
+        Task<ScheduleModel> GetTeamScheduleAsync(
             string teamAbbreviation,
             string season,
             CancellationToken cancellationToken = default);

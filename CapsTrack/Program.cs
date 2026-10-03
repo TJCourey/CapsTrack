@@ -1,4 +1,5 @@
 using CapsTrack.api.Clients;
+using CapsTrack.api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddHttpClient<INhlClient, NhlClient>(client =>
 {
     client.BaseAddress = new Uri(nhlBaseUrl);
 });
+builder.Services.AddScoped<IScheduleService, ScheduleService>();
 
 var app = builder.Build();
 

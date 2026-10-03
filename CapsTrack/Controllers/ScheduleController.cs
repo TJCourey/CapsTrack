@@ -1,24 +1,25 @@
-﻿using CapsTrack.api.Models;
+﻿
+using CapsTrack.api.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CapsTrack.api.Controllers
 {
     [ApiController]
     [Route("api/team/schedule")]
-        
-    
     public class GetScheduleController : ControllerBase
     {
+        private readonly IScheduleService _scheduleService;
 
-        [HttpGet]
-        public IActionResult Get(string teamAbbreviation, string season)
+        public GetScheduleController(IScheduleService scheduleService)
         {
-            var scheduleModel = new ScheduleModel();
-
-
-            return Ok(scheduleModel);
+            _scheduleService = scheduleService;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            // Use _scheduleService here to return real data.
+            return Ok();
+        }
     }
 }
