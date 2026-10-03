@@ -19,11 +19,28 @@ namespace CapsTrack.api.Controllers
         public async Task<IActionResult> Get(
             CancellationToken cancellationToken)
         {
-            var schedule = await _scheduleService.GetTeamScheduleAsync(
-                "WSH",
-                "20262027",
-                cancellationToken);
-            return Ok(schedule);
+            try
+            {
+                var schedule = await _scheduleService.GetTeamScheduleAsync(
+                    "WSH",
+                    "20262027",
+                    cancellationToken);
+                return Ok(schedule);
+            }
+            catch (HttpRequestException)
+            {
+                return Problem(
+                    title: "Unable to retrieve NHL schedule",
+                    statusCode: StatusCodes.Status502BadGateway);
+            }
+            catch (InvalidOperationException)
+            {
+                return Problem(
+                title: "NHL schedule data was unavailable.",
+                statusCode: StatusCodes.Status502BadGateway
+                    );
+            }
         }
+
     }
 }
