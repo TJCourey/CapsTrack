@@ -4,62 +4,47 @@ using CapsTrack.api.Models.Nhl;
 
 namespace CapsTrack.Api.Tests.Mappers
 {
-    public class GameScheduleMapperTest
+    public class GameMapperTest
     {
         [Fact]
-        public void ToModel_MapsNhlScheduleResponseToScheduleModel()
+        public void ToModel_MapsNhlGameToGameModel()
         {
-            var nhlSchedule = new NhlScheduleResponse
+            // Arrange
+            var nhlGame = new NhlGame
             {
-                CurrentSeason = 20262027,
-                Games =
-                [
-                    new NhlGame
-                    {
-                        Id = 1,
-                        Season = 20262027,
-                        GameDate = new DateOnly(2026, 10, 1),
-                        GameState = "FINAL",
-                        HomeTeam = new NhlTeam
-                        {
-                            Abbrev = "WSH",
-                            Score = 4
-                        },
-                        AwayTeam = new NhlTeam
-                        {
-                            Abbrev = "PIT",
-                            Score = 3
-                        }
-                    },
-                     new NhlGame
-                    {
-                        Id = 2,
-                        Season = 20262027,
-                        GameDate = new DateOnly(2026, 10, 10),
-                        GameState = "FUT",
-                        HomeTeam = new NhlTeam
-                        {
-                            Abbrev = "NYR"
-                        },
-                        AwayTeam = new NhlTeam
-                        {
-                            Abbrev = "WSH"
-                        }
-                    }
-                ]
+                Id = 2026020001,
+                Season = 20262027,
+                GameDate = new DateOnly(2026, 10, 8),
+                GameState = "FINAL",
+
+                HomeTeam = new NhlTeam
+                {
+                    Abbrev = "WSH",
+                    Score = 4
+                },
+
+                AwayTeam = new NhlTeam
+                {
+                    Abbrev = "PIT",
+                    Score = 2
+                }
             };
-            var result = nhlSchedule.ToModel("wsh");
 
-            Assert.Equal("WSH", result.TeamAbbrv);
+            // Act
+            var result = nhlGame.ToModel();
+
+            // Assert
+            Assert.Equal(2026020001, result.GameId);
             Assert.Equal(20262027, result.Season);
-            Assert.Equal(2, result.Games.Count);
+            Assert.Equal(new DateTime(2026, 10, 8), result.GameDate);
 
-            Assert.Equal(1, result.Games[0].GameId);
-            Assert.Equal(GameStatus.Final, result.Games[0].Status);
+            Assert.Equal("WSH", result.HomeTeam);
+            Assert.Equal("PIT", result.AwayTeam);
 
-            Assert.Equal(2, result.Games[1].GameId);
-            Assert.Equal(GameStatus.Scheduled, result.Games[1].Status);
+            Assert.Equal(4, result.HomeScore);
+            Assert.Equal(2, result.AwayScore);
 
+            Assert.Equal(GameStatus.Final, result.Status);
         }
     }
 }
